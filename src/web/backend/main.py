@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from fastapi import FastAPI
 from pydantic import BaseModel
 from encoding.encoder import encode
@@ -21,12 +22,15 @@ class TextMessage(BaseModel):
     text: str
 
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
+
+app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
 
 
 @app.get("/")
 def serve_vue():
-    index_path = os.path.join("static", "index.html")
+    index_path = STATIC_DIR / "index.html"
     return FileResponse(index_path)
 
 
