@@ -1,8 +1,8 @@
-from .vs import byte_to_vs
-from .utils import codepoint_to_bytes
 import random
 import zlib
 from typing import Iterator
+from .vs import byte_to_vs
+from .utils import codepoint_to_bytes
 
 
 def encode_bytes(data: bytes) -> str:

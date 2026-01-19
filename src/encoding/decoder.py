@@ -1,6 +1,6 @@
+import zlib
 from .vs import vs_to_byte
 from .utils import bytes_to_codepoint
-import zlib
 
 
 def decode_bytes(pingu_text: str) -> bytes:
